@@ -77,9 +77,9 @@ echo <<< _HTMLCONTENT
         Senha:      <input type="text" name="senha">
 
         Selecione:  <select name="privilegio" id="privilegio">
-                <option value=1>Admistrador</option>
-                <option value=2>Caixa</option>
-                <option value=3>Gerente</option>
+                <option value=0>Admistrador</option>
+                <option value=1>Caixa</option>
+                <option value=2>Gerente</option>
             </select>
         
         <input type = "submit" value="Registrar">
@@ -108,10 +108,14 @@ for ($j = 0; $j < $linhas; ++$j) {
     $resultado->data_seek($j);
     $linha = $resultado->fetch_array(MYSQLI_NUM);
     $falta--;
+    $disabled = "";
     if($falta<0)
         $falta = 2;
     if ($linha[2] == $administrador)
+    {
         $nivel = "Administrador";
+        $disabled = "disabled";
+    }
     elseif ($linha[2] == $caixa)
         $nivel = "Caixa";
     elseif ($linha[2] == $gerente)
@@ -124,8 +128,9 @@ for ($j = 0; $j < $linhas; ++$j) {
     <fieldset class="scheduler-border">
 Usuario:    $linha[0]
 Nivel:      $nivel
-	<form action="$arq" method="post"><input type="hidden" name="apagar" value="yes"><input type="hidden" name="usuario" value="$linha[0]"><button type="submit" name="button" class="btn btn-primary">Apagar</button>
+	<form action="$arq" method="post"><input type="hidden" name="apagar" value="yes"><input type="hidden" name="usuario" value="$linha[0]"><button type="submit" name="button" class="btn btn-primary" $disabled>Apagar</button>
 	</form></fieldset></pre>
+    
 </div>
 _END;
 if((($j+1)%3)==0)

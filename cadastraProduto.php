@@ -109,6 +109,7 @@ for ($j = 0; $j < $linhas; ++$j) {
     $resultado->data_seek($j);
     $linha = $resultado->fetch_array(MYSQLI_NUM);
     $falta--;
+    $valor="";
     if($falta<0)
         $falta = 2;
     if ($linha[3] == $bebidaGelada)
@@ -121,13 +122,14 @@ for ($j = 0; $j < $linhas; ++$j) {
         $categoria = "Lanche";
     else
         $categoria = "Categoria Inválida";
+    $valor = number_format($linha[2],2,",",".");
     echo <<<_END
 <div class="col-md-4">
 <pre>
     <fieldset class="scheduler-border">
     
 produto:    $linha[1]
-Valor:      $linha[2]
+Valor:      RS $valor
 Categoria:  $categoria
 	<form action="$arq" method="post"><input type="hidden" name="apagar" value="yes"><input type="hidden" name="produto" value="$linha[0]"><button type="submit" name="button" class="btn btn-primary">Apagar</button>
 	</form></fieldset></pre>

@@ -8,7 +8,7 @@ session_start();
 $arq0 = "senhas.php";
 $arq1 = "index.php";
 $arq2 = "produtos.php";
-$arq3 = "fazTudo.php";
+$arq3 = "cadastraProduto.php";
 $arq4 = "senhas_admin.php";
 $arq5 = "registraEmprDevol.php";
 
@@ -45,7 +45,7 @@ if ($usuarioDigitado == "" or $senhaDigitada == "") {
             header("Location: $administracao");
         else if ($nivel == $caixa) header("Location: $arq2");
         //{$arq = $arq2;	mostraLivros($tab, $arq2, $conexão);}
-        else if ($nivel == $gerente) header("Location: $arq5");
+        else if ($nivel == $gerente) header("Location: $arq3");
         //{$arq = $arq2;	mostraLivros($tab, $arq2, $conexão);}
         else header("Location: $arq1");
     }

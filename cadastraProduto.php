@@ -43,7 +43,7 @@ if (
     $valor     = get_post($conexão, 'valor');
     $categoria = get_post($conexão, 'categoria');
     
-    $query    = "INSERT INTO $tab VALUES" . "(null, '$produto', '$valor', '$categoria')";
+    $query    = "INSERT INTO $tab VALUES" . "(null, '$produto', '$valor', '$categoria', 0)";
 
     $resultado     = $conexão->query($query);
     if (!$resultado) echo "Erro ao inserir dados: $query<br>" .
@@ -80,7 +80,7 @@ echo <<< _HTMLCONTENT
                 <option value=1>Bebida Gelada</option>
                 <option value=2>Bebida Quente</option>
                 <option value=3>Salgado</option>
-                <option value=3>Lanche</option>
+                <option value=4>Lanche</option>
             </select>
         
         <input type = "submit" value="Registrar">

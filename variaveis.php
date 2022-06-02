@@ -9,7 +9,6 @@
     $salgado=3;
     $lanche=4;
   
-    $lanche=3;
     //Arquivos
     $HOME = "index.php";
     $sair = "sair.php";
